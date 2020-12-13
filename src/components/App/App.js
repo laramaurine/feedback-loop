@@ -3,8 +3,13 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import Feeling from '../Feeling/Feeling.js';
+
+import Feelings from '../Feeling/Feeling.js';
 import Understanding from '../Understanding/Understanding.js';
+import Support from '../Support/Support.js';
+import Comments from '../Comments/Comments.js';
+import ThankYou from '../Review/Review.js';
+import Submit from '../Submit/Submit.js';
 
 class App extends Component {
   render() {
@@ -12,22 +17,27 @@ class App extends Component {
       <Router>
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Feedback!</h1>
-          <h4><i>Don't forget it!</i></h4>
-          <Route exact path="/" component={Feeling} />
-          <Route path="/understanding" component={Understanding} />
+          <h1 className="App-title">Feelings</h1>
+          <h4><i>Talkin bout feelings</i></h4>
         </header>
         <br/>
+        <Route exact path="/" component={Feelings} />
+        <Route path="/understanding" component={Understanding} />
+        <Route path="/support" component={Support} />
+        <Route path="/comments" component={Comments} />
+        <Route path="/thankyou" component={ThankYou} />
+        <Route path="/submit" component={Submit} />
+        
       </div>
       </Router>
     );
   }
 }
+
 const mapStateToProps = (reduxState) => {
   return {
     reduxState
-   }
- }
+  }
+}
 
 export default connect(mapStateToProps) (App);
-
