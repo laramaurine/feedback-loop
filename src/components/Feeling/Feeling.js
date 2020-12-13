@@ -4,13 +4,53 @@ import { withRouter } from 'react-router-dom';
 
 class Feeling extends Component {
 
-  
+  state = {
+      feeling: ''
+  }
+
+  handleFeelings = (event) => {
+      console.log('all the feels');
+      this.setState({
+          feeling: event.target.value,
+      })
+  }
+
+  handleClick = () => {
+      if (this.state.feeling === '') {
+          alert('Enter feelings before proceeding')
+      } else {
+          this.props.dispatch({
+              type: 'SET_FEELING',
+              payload: this.state.feeling,
+          })
+          this.props.history.push('/understanding')
+          //where it goes next
+      }
+  }
 
   render() {
       return (
-      <h1>hello from feelings</h1>
-      )
-}
+          <div>
+              <h2>How are you feeling today?</h2>
+              <p>Feeling?</p>
+              <select value={this.state.feeling} onChange={this.handleFeelings}>
+                  <option value=""></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+              </select>
+
+              <div>
+                  <button onClick={this.handleClick}>Next</button>
+              </div>
+
+              
+
+          </div>
+      );
+  }
 }
 
 
@@ -19,3 +59,4 @@ const mapStateToProps = (reduxState) => {
 }
 
 export default withRouter(connect(mapStateToProps)(Feeling));
+

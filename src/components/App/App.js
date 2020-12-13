@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import './App.css';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import Feeling from '../Feeling/Feeling.js';
+import Understanding from '../Understanding/Understanding.js';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <h1 className="App-title">Feedback!</h1>
           <h4><i>Don't forget it!</i></h4>
           <Route exact path="/" component={Feeling} />
+          <Route path="/understanding" component={Understanding} />
         </header>
         <br/>
       </div>
@@ -21,10 +23,11 @@ class App extends Component {
     );
   }
 }
-// const mapStateToProps = (reduxState) => {
-//   return {
-//     reduxState
-//   }
-// }
+const mapStateToProps = (reduxState) => {
+  return {
+    reduxState
+   }
+ }
 
-export default  (App);
+export default connect(mapStateToProps) (App);
+
