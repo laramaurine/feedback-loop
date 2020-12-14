@@ -3,17 +3,21 @@
 }
 
 .App-header {
-  background-color: #033076;
+  background-color: purple;
   min-height: 70px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2.0em;
+  font-family: cursive;
 }
 
 .App-intro {
   font-size: large;
+  font-family: cursive;
 }
-
+.App{
+  background-color: lavender;
+}
